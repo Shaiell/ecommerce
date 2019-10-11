@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ecommerce.DAL;
 using Ecommerce.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +33,9 @@ namespace Ecommerce
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             //Configurações manuais..
+            //configurando injeção de dependencias
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("EcommerceConnection")));
+            services.AddScoped<ProdutoDAO>();
             //termina configuração manual
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -56,7 +59,7 @@ namespace Ecommerce
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Produto}/{action=Cadastrar}/{id?}");
             });
         }
     }
