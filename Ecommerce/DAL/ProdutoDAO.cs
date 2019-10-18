@@ -35,6 +35,11 @@ namespace Ecommerce.DAL
             ctx.SaveChanges();
         }
 
+        public void AlterarProduto(Produto p)
+        {
+            ctx.Update(p);
+            ctx.SaveChanges();
+        }
         
     }
 }

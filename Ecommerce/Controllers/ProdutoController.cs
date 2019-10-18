@@ -54,5 +54,24 @@ namespace Ecommerce.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public IActionResult Alterar(int? id)
+        {
+            ViewBag.Produto = pDAO.BuscarProdutoPorId(id);
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Alterar(string txtNome, string txtDescricao, string txtPreco, string txtQuantidade, string txtId, string hdnId)
+        {
+            Produto p = pDAO.BuscarProdutoPorId(Convert.ToInt32(hdnId));
+            p.Nome = txtNome;
+            p.Descricao = txtDescricao;
+            p.Preco = Convert.ToDouble(txtPreco);
+            p.Quantidade = Convert.ToInt32(txtQuantidade);
+            pDAO.AlterarProduto(p);
+            return RedirectToAction("Index");
+        }
     }
 }
