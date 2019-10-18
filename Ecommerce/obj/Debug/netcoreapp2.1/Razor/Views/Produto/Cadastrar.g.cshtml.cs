@@ -58,7 +58,7 @@ using Ecommerce.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(29, 112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a0328db4c2c746dba3fc874b80239ab4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9d2f243ce40d46998282642104f22344", async() => {
                 BeginContext(35, 99, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Cadastrar Produto</title>\r\n");
                 EndContext();
@@ -78,12 +78,12 @@ using Ecommerce.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(143, 505, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88804c272f3d461e88f0d1e3800709d3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36705c60f44c4f7b848095ce4e98236b", async() => {
                 BeginContext(149, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(155, 482, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "deff5e0128364cc298796f5eb7a06f58", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0cb14638655b494f878d4ba11698991f", async() => {
                     BeginContext(198, 432, true);
                     WriteLiteral(@"
         <label>Nome:</label>

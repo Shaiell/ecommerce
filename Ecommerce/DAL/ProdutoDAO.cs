@@ -19,5 +19,22 @@ namespace Ecommerce.DAL
             ctx.Produtos.Add(p);
             ctx.SaveChanges();
         }
+
+        public List<Produto> ListarProdutos()
+        {
+            return ctx.Produtos.ToList();
+        }
+
+        public Produto BuscarProdutoPorId(int? id) {
+            return ctx.Produtos.Find(id);
+        }
+
+        public void ExcluirProduto(int? id)
+        {
+            ctx.Remove(BuscarProdutoPorId(id));
+            ctx.SaveChanges();
+        }
+
+        
     }
 }

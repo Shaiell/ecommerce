@@ -18,6 +18,8 @@ namespace Ecommerce.Controllers
         //Todos os metodos que resultarem de uma ação da View são chamados de actions.
         public IActionResult Index()
         {
+            ViewBag.Produtos = pDAO.ListarProdutos();
+            ViewBag.DataHora = DateTime.Now;
             return View();
         }
 
@@ -37,7 +39,20 @@ namespace Ecommerce.Controllers
             p.Quantidade = Convert.ToInt32(txtQuantidade);
             pDAO.Cadastrar(p);
 
-            return View();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Remover(int? id)
+        {
+            if (id!=null)
+            {
+                pDAO.ExcluirProduto(id);
+            }
+            else
+            {
+                //Direcionar para uma pagina de erro.
+            }
+            return RedirectToAction("Index");
         }
     }
 }
