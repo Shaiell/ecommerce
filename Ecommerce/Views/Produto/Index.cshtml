@@ -1,35 +1,28 @@
-﻿@{ 
+﻿@{
+    
     List<Produto> produtos = ViewBag.Produtos;
     DateTime dataHora = ViewBag.DataHora;
 }
 
-<!DOCTYPE html>
+<h2>Gerenciamento de Produtos</h2>
+<br />
+<a class="btn btn-success" asp-action="Cadastrar">Cadastrar Produto</a>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <h2>Gerenciamento de Produtos</h2>
-    <br />
-    <a asp-action="Cadastrar">Cadastrar Produto</a>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-                <th>Criado em</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Produto item in produtos)
-            {
+<table style="margin-top:10px;margin-bottom:10px" class="table table-hover table-striped">
+    <thead>
+        <tr class="table-primary">
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Criado em</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Produto item in produtos)
+        {
             <tr>
                 <td>@item.Nome</td>
                 <td>@item.Descricao</td>
@@ -37,16 +30,17 @@
                 <td>@item.Quantidade</td>
                 <td>@item.CriadoEm</td>
                 <td>
-                    <a asp-action="Remover" asp-route-id="@item.ProdutoId">Excluir</a>
-                    <a asp-action="Alterar" asp-route-id="@item.ProdutoId">Alterar</a>
+                    <a class="btn btn-danger" asp-action="Remover" asp-route-id="@item.ProdutoId">Excluir</a>
+
                 </td>
-                <td></td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Alterar" asp-route-id="@item.ProdutoId">Alterar</a>
+                </td>
             </tr>
-            }
-        </tbody>
-    </table>
-    <p>
-        <b> Dados atualizados em: </b> @dataHora
-    </p>
-</body>
-</html>
+        }
+    </tbody>
+</table>
+<p>
+    <b> Dados atualizados em: </b> @dataHora
+</p>
+
