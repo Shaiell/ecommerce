@@ -1,34 +1,31 @@
-﻿
-@{
-    
-    Produto produto = ViewBag.Produto;
-}
+﻿@model Produto
+
 
     <form asp-action="Alterar" method="post">
         <fieldset>
             <legend>Alterar Produto</legend>
             <div class="form-group" id="id1">
-                <input type="hidden" value="@produto.ProdutoId" name="hdnId" />
+                <input type="hidden" asp-for="ProdutoId" />
             </div>
             <div class="form-group" id="id">
                 <label>ID:</label>
-                <input type="text" name="txtId" class="form-control" value="@produto.ProdutoId" readonly />
+                <input type="text"  class="form-control" asp-for="ProdutoId" />
             </div>
             <div class="form-group" id="nome">
                 <label>Nome:</label>
-                <input type="text" name="txtNome" class="form-control" value="@produto.Nome" />
+                <input type="text" class="form-control" asp-for="Nome" />
             </div>
             <div class="form-group" id="descricao">
                 <label>Descrição:</label>
-                <input type="text" name="txtDescricao" class="form-control" value="@produto.Descricao" />
+                <input type="text" class="form-control" asp-for="Descricao" />
             </div>
             <div class="form-group" id="preco">
                 <label>Preço:</label>
-                <input type="text" name="txtPreco" class="form-control" value="@produto.Preco" />
+                <input type="text" class="form-control" asp-for="Preco" />
             </div>
             <div class="form-group" id="quantidade">
                 <label>Quantidade:</label>
-                <input type="text" name="txtQuantidade" class="form-control" value="@produto.Quantidade" />
+                <input type="text" class="form-control" asp-for="Quantidade" />
             </div>
             <div style="text-align:end" id="botao">
                 <input type="submit" class="btn btn-success" value="Salvar" />

@@ -1,6 +1,4 @@
-﻿@{
-    
-}
+﻿@model  Produto
 
 <form asp-action="Cadastrar" method="post">
     <fieldset>
@@ -8,19 +6,19 @@
 
         <div class="form-group" id="nome">
             <label>Nome:</label>
-            <input type="text" class="form-control" name="txtNome" />
+            <input type="text" class="form-control" asp-for="Nome" />
         </div>
         <div class="form-group" id="descricao">
             <label>Descrição:</label>
-            <input type="text" class="form-control" name="txtDescricao" />
+            <input type="text" class="form-control" asp-for="Descricao" />
         </div>
         <div class="form-group" id="preco">
             <label>Preço:</label>
-            <input type="text" class="form-control" name="txtPreco" />
+            <input type="text" class="form-control" asp-for="Preco" />
         </div>
         <div class="form-group" id="quantidade">
             <label>Quantidade:</label>
-            <input type="text" class="form-control" name="txtQuantidade" />
+            <input type="text" class="form-control" asp-for="Quantidade" />
         </div>
         <div style="text-align:end" id="botao">
             <input type="submit" class="btn btn-success" value="Cadastrar" />
