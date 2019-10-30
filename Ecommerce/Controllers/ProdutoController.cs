@@ -1,40 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Ecommerce.DAL;
-using Ecommerce.Models;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Repository;
 
 namespace Ecommerce.Controllers
 {
     public class ProdutoController : Controller
     {
         private readonly ProdutoDAO pDAO;
-        public ProdutoController(ProdutoDAO produtoDAO)
+        private readonly CategoriaDAO cDAO;
+        public ProdutoController(ProdutoDAO produtoDAO, CategoriaDAO categoriaDAO)
         {
             pDAO = produtoDAO;
+            cDAO = categoriaDAO;
         }
         //Todos os metodos que resultarem de uma ação da View são chamados de actions.
         public IActionResult Index()
         { 
             ViewBag.DataHora = DateTime.Now;
-            return View(pDAO.ListarProdutos());
+            return View(pDAO.ListarTodos());
         }
 
         public IActionResult Cadastrar()
         {
-
+            ViewBag.Categorias = new SelectList(cDAO.ListarTodos(), "CategoriaId", "Nome");
             return View();
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(Produto produto)
+        public IActionResult Cadastrar(Produto produto, int drpCategorias)
         {
-            
-            pDAO.Cadastrar(produto);
+            ViewBag.Categorias = new SelectList(cDAO.ListarTodos(), "CategoriaId", "Nome");
+            if (ModelState.IsValid){
 
-            return RedirectToAction("Index");
+                produto.Categoria = cDAO.BuscarPorId(drpCategorias);
+
+                if (pDAO.Cadastrar(produto))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Este produto ja existe");
+                    return View(produto);
+                }
+            }
+            return View(produto);
         }
 
         public IActionResult Remover(int? id)
@@ -54,7 +66,7 @@ namespace Ecommerce.Controllers
         {
              
 
-            return View(pDAO.BuscarProdutoPorId(id));
+            return View(pDAO.BuscarPorId(id));
         }
 
         [HttpPost]

@@ -16,6 +16,9 @@ services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.Get
 "ConnectionStrings": {
     "EcommerceConnection": "Server=(localdb)\\mssqllocaldb;Database=DbEcommerce;Trusted_Connection=True"
 
-6 - Adicionar uma migração = Add-Migration NomeMigracao
+8 - Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version:2.1.11 -Project: Repository
 
-7 - Atualizar o banco de dados = Update-Database -verbose
+6 - Adicionar uma migração = Add-Migration NomeMigracao -Project: Repository
+
+7 - Atualizar o banco de dados = Update-Database -verbose -Project: Repository
+

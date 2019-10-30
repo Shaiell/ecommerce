@@ -3,22 +3,35 @@
 <form asp-action="Cadastrar" method="post">
     <fieldset>
         <legend>Cadastrar Produto</legend>
+        <div asp-validation-summary="ModelOnly" class="text-danger">
 
+        </div>
         <div class="form-group" id="nome">
-            <label>Nome:</label>
+            <label asp-for="Nome"></label>
             <input type="text" class="form-control" asp-for="Nome" />
+
+            <span asp-validation-for="Nome" class="text-danger"></span>
         </div>
         <div class="form-group" id="descricao">
-            <label>Descrição:</label>
+            <label asp-for="Descricao"></label>
             <input type="text" class="form-control" asp-for="Descricao" />
+            <span asp-validation-for="Descricao" class="text-danger" ></span>
         </div>
         <div class="form-group" id="preco">
-            <label>Preço:</label>
+            <label asp-for="Preco"></label>
             <input type="text" class="form-control" asp-for="Preco" />
+            <span asp-validation-for="Preco" class="text-danger"></span>
         </div>
         <div class="form-group" id="quantidade">
-            <label>Quantidade:</label>
+            <label asp-for="Quantidade"></label>
             <input type="text" class="form-control" asp-for="Quantidade" />
+            <span asp-validation-for="Quantidade" class="text-danger"></span>
+        </div>
+        <div id="Categoria" class="form-group">
+            <label>Categoria:</label>
+            <select asp-items="@ViewBag.Categorias" class="form-control" name="drpCategorias">
+                <option> --Selecione--</option>
+            </select>
         </div>
         <div style="text-align:end" id="botao">
             <input type="submit" class="btn btn-success" value="Cadastrar" />

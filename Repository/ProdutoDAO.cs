@@ -1,12 +1,12 @@
-﻿using Ecommerce.Models;
+﻿using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ecommerce.DAL
+namespace Repository
 {
-    public class ProdutoDAO
+    public class ProdutoDAO : IRepository<Produto>
     {
         private readonly Context ctx;
         public ProdutoDAO(Context context)
@@ -14,24 +14,33 @@ namespace Ecommerce.DAL
             ctx = context;
         }
 
-        public void Cadastrar(Produto p)
+        public bool Cadastrar(Produto p)
         {
-            ctx.Produtos.Add(p);
-            ctx.SaveChanges();
+            if(BuscarProdutoPorNome(p) == null) { 
+                ctx.Produtos.Add(p);
+                ctx.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
-        public List<Produto> ListarProdutos()
+        public Produto BuscarProdutoPorNome(Produto p)
+        {
+            return ctx.Produtos.FirstOrDefault(x => x.Nome.Equals(p.Nome));
+        }
+
+        public List<Produto> ListarTodos()
         {
             return ctx.Produtos.ToList();
         }
 
-        public Produto BuscarProdutoPorId(int? id) {
+        public Produto BuscarPorId(int? id) {
             return ctx.Produtos.Find(id);
         }
 
         public void ExcluirProduto(int? id)
         {
-            ctx.Remove(BuscarProdutoPorId(id));
+            ctx.Remove(BuscarPorId(id));
             ctx.SaveChanges();
         }
 
